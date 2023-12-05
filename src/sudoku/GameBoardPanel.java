@@ -88,14 +88,20 @@ public class GameBoardPanel extends JPanel {
     	  Cell sourceCell = (Cell) e.getSource();
 			try {
 				if (temMaisDeUmCaractere(sourceCell.getText())) {
-					JOptionPane.showMessageDialog(null, "Você digitou mais de um caractere!");
+					JOptionPane.showMessageDialog(null, "Você digitou mais de um caractere!\nDigite um número inteiro entre 1 e 9");
+					sourceCell.setText("");
+					return;
+				}
+				if(Integer.parseInt(sourceCell.getText())== 0) {
+					JOptionPane.showMessageDialog(null, "O numero 0 não entra no jogo!\nDigite um número inteiro entre 1 e 9");
 					sourceCell.setText("");
 					return;
 				}
 				// Retrieve the int entered
 				int numberIn = Integer.parseInt(sourceCell.getText());
+				
 				// For debugging
-				System.out.println("You entered " + numberIn);
+				System.out.println("You entered :" + numberIn);
 
 				/*
 				 * [TODO 5] (later - after TODO 3 and 4) Check the numberIn against
@@ -124,10 +130,10 @@ public class GameBoardPanel extends JPanel {
 				 */
 
 				if (isSolved()) {
-					JOptionPane.showMessageDialog(null, "Congratulations, you beat Sudoku!");
+					JOptionPane.showMessageDialog(null, "Congratulations, you won exactly on time: "+ Relogio.getTime() );
 				}
 			} catch (NumberFormatException nfe) {
-				JOptionPane.showMessageDialog(null, "Digite um numero de 1 a 9!");
+				JOptionPane.showMessageDialog(null, "Digite um número inteiro entre 1 e 9");
 				sourceCell.setText("");
 			}
       }
