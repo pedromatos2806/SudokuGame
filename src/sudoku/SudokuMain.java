@@ -17,7 +17,7 @@ public class SudokuMain extends JFrame {
 	// private variables
 	private static GameBoardPanel board = new GameBoardPanel();
 	private static JButton btnNewGame = new JButton("Iniciar Jogo");
-	private static JButton btnRestartGame = new JButton("");
+	private static JButton btnRestartGame = new JButton();
 	private static JComboBox<String> cmbNiveis = new JComboBox<String>();;
 	private static JLabel lblNiveis = new JLabel("Escolha um Nivel :");;
 	private static JLabel lblSudoku = new JLabel(new ImageIcon(SudokuMain.class.getResource("/images/sudoku.png")));
@@ -184,7 +184,7 @@ public class SudokuMain extends JFrame {
 			lblSudoku.setVisible(false);
 			lblName.setVisible(false);
 			txtName.setVisible(false);
-			nomeJogador = txtName.getText();
+			nomeJogador = transformarString(txtName.getText());
 			lblJogador.setText(nomeJogador);
 
 		}
@@ -215,7 +215,30 @@ public class SudokuMain extends JFrame {
 			instance = new SudokuMain();
 		return instance;
 	}
+	
+	//Esse método serve para colocar letras maiusculas nos nomes próprios!
+    public static String transformarString(String input) {
+        if (input == null || input.isEmpty()) {
+            return input;
+        }
 
+        StringBuilder resultado = new StringBuilder();
+        boolean transformarParaMaiuscula = true;
+
+        for (char caractere : input.toCharArray()) {
+            if (Character.isWhitespace(caractere)) {
+                resultado.append(caractere);
+                transformarParaMaiuscula = true;
+            } else if (transformarParaMaiuscula) {
+                resultado.append(Character.toUpperCase(caractere));
+                transformarParaMaiuscula = false;
+            } else {
+                resultado.append(Character.toLowerCase(caractere));
+            }
+        }
+
+        return resultado.toString();
+    }
 	/** The entry main() entry method */
 	public static void main(String[] args) {
 		// [TODO 1] Check "Swing program template" on how to run
