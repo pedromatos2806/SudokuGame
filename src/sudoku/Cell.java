@@ -1,7 +1,12 @@
 package sudoku;
+
+
 import java.awt.Color;
 import java.awt.Font;
+
+
 import javax.swing.JTextField;
+
 /**
  * The Cell class model the cells of the Sudoku puzzle, by customizing (subclass)
  * the javax.swing.JTextField to include row/column, puzzle number and status.
@@ -62,6 +67,6 @@ public class Cell extends JTextField {
          super.setBackground(BG_CORRECT_GUESS);
       } else if (status == CellStatus.WRONG_GUESS) {    // from TO_GUESS
          super.setBackground(BG_WRONG_GUESS);
-      }
+      }  
    }
 }

@@ -1,18 +1,14 @@
 package sudoku;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.Timer;
+
 
 public class Erro extends JLabel {
 
 	private static final long serialVersionUID = 1L;
 	private static Erro instance;
 	private static int numberErros;
-	private static String erro;
 	private Erro() {
 		updateErros(0);
 	}

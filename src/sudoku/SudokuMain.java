@@ -17,7 +17,7 @@ public class SudokuMain extends JFrame {
 	// private variables
 	private static GameBoardPanel board = new GameBoardPanel();
 	private static JButton btnNewGame = new JButton("Iniciar Jogo");
-	private static JButton btnRestartGame = new JButton("Restart Game");
+	private static JButton btnRestartGame = new JButton("");
 	private static JComboBox<String> cmbNiveis = new JComboBox<String>();;
 	private static JLabel lblNiveis = new JLabel("Escolha um Nivel :");;
 	private static JLabel lblSudoku = new JLabel(new ImageIcon(SudokuMain.class.getResource("/images/sudoku.png")));
@@ -63,9 +63,10 @@ public class SudokuMain extends JFrame {
 		lblSudoku.setVisible(true);
 		lblSudoku.setBounds(450, 0, 480, 700);
 		getContentPane().add(lblSudoku);
+		btnRestartGame.setIcon(new ImageIcon(SudokuMain.class.getResource("/images/restart.png")));
 
 		// Botão Restart Game:
-		btnRestartGame.setBounds(620, 100, 117, 25);
+		btnRestartGame.setBounds(650, 90, 51, 51);
 		getContentPane().add(btnRestartGame);
 
 		// Label Nome do Jogador
@@ -185,6 +186,7 @@ public class SudokuMain extends JFrame {
 			board.setVisible(false);
 			btnRestartGame.setVisible(false);
 			Erro.getInstance().setVisible(false);
+			Erro.setNumberEros(0);
 			cmbNiveis.setVisible(true);
 			btnNewGame.setVisible(true);
 			lblNiveis.setVisible(true);

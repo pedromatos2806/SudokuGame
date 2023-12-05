@@ -76,7 +76,10 @@ public class GameBoardPanel extends JPanel {
       return true;
    }
 
-
+   public boolean temMaisDeUmCaractere(String text) {
+	    String texto = text.trim(); //Obtém o texto e remove espaços em branco no início/fim
+	    return texto.length() > 1;
+	}
    // [TODO 2] Define a Listener Inner Class for all the editable Cells
    private class CellInputListener implements ActionListener {
       @Override
@@ -84,7 +87,10 @@ public class GameBoardPanel extends JPanel {
          // Get a reference of the JTextField that triggers this action event
     	  Cell sourceCell = (Cell) e.getSource();
 			try {
-
+				if (temMaisDeUmCaractere(sourceCell.getText())) {
+					JOptionPane.showMessageDialog(null, "Você digitou mais de um caractere!");
+					return;
+				}
 				// Retrieve the int entered
 				int numberIn = Integer.parseInt(sourceCell.getText());
 				// For debugging
@@ -98,13 +104,13 @@ public class GameBoardPanel extends JPanel {
 
 				if (numberIn == sourceCell.number) {
 					sourceCell.status = CellStatus.CORRECT_GUESS;
-					
 				} else {
 					sourceCell.status = CellStatus.WRONG_GUESS;
-					Erro.getInstance().setNumberEros(Erro.getInstance().getNumberErros()+1);
-					if(Erro.getInstance().getNumberErros() >= 3) {
+					Erro.getInstance();
+					Erro.setNumberEros(Erro.getNumberErros()+1);
+					if(Erro.getNumberErros() >= 3) {
 						JOptionPane.showMessageDialog(null, "Você errou mais de 3 vezes, ou seja, GAME OVER!!!");
-						SudokuMain.getInstance().restartGame(true);
+						SudokuMain.restartGame(true);
 					}
 					
 				}
