@@ -23,8 +23,8 @@ public class SudokuMain extends JFrame {
 	private static JLabel lblSudoku = new JLabel(new ImageIcon(SudokuMain.class.getResource("/images/sudoku.png")));
 	private static JLabel lblName = new JLabel("Digite seu nome :");
 	private static JTextField txtName;
-	private static JLabel lblJogador = new JLabel("");
-	
+	private static JLabel lblJogador = new JLabel();
+	private static JLabel lblImageJogador = new JLabel();
 	
 	// Constructor
 	public SudokuMain() {
@@ -66,15 +66,23 @@ public class SudokuMain extends JFrame {
 		btnRestartGame.setIcon(new ImageIcon(SudokuMain.class.getResource("/images/restart.png")));
 
 		// Botão Restart Game:
-		btnRestartGame.setBounds(650, 90, 51, 51);
+		btnRestartGame.setBounds(655, 90, 51, 51);
 		getContentPane().add(btnRestartGame);
 
 		// Label Nome do Jogador
-		lblJogador.setFont(new Font("Tahoma", Font.PLAIN, 22));
-		lblJogador.setBounds(600, 60, 400, 30);
+		lblJogador.setFont(new Font("Comic Sans MS", Font.ITALIC, 22));
+		lblJogador.setBounds(655, 60, 400, 30);
 		getContentPane().add(lblJogador);
 		lblJogador.setForeground(Color.BLACK);
 		lblJogador.setHorizontalAlignment(SwingConstants.LEFT);
+		lblImageJogador.setIcon(new ImageIcon(SudokuMain.class.getResource("/images/player.png")));
+		lblImageJogador.setSize(51, 51);
+		lblImageJogador.setLocation(604, 55);
+		
+		
+		// Label Imagem nome do Jogador 
+		getContentPane().add(lblImageJogador);
+		lblImageJogador.setVisible(false);
 		
 		// Pane Board:
 		board.setBounds(0, 50, 435, 462);
@@ -167,6 +175,8 @@ public class SudokuMain extends JFrame {
 			btnRestartGame.setVisible(true);
 			Erro.getInstance().setVisible(true);
 			Relogio.getInstance().setVisible(true);
+			lblJogador.setVisible(true);
+			lblImageJogador.setVisible(true);
 			Relogio.getInstance().startTimer();
 			cmbNiveis.setVisible(false);
 			btnNewGame.setVisible(false);
@@ -175,9 +185,8 @@ public class SudokuMain extends JFrame {
 			lblName.setVisible(false);
 			txtName.setVisible(false);
 			nomeJogador = txtName.getText();
-			lblJogador.setText("Jogador:  " + nomeJogador);
-			lblJogador.setVisible(true);
-			
+			lblJogador.setText(nomeJogador);
+
 		}
 	}
 
@@ -186,6 +195,8 @@ public class SudokuMain extends JFrame {
 			board.setVisible(false);
 			btnRestartGame.setVisible(false);
 			Erro.getInstance().setVisible(false);
+			lblJogador.setVisible(false);
+			lblImageJogador.setVisible(false);
 			Erro.setNumberEros(0);
 			cmbNiveis.setVisible(true);
 			btnNewGame.setVisible(true);
