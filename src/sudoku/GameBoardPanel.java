@@ -89,6 +89,7 @@ public class GameBoardPanel extends JPanel {
 			try {
 				if (temMaisDeUmCaractere(sourceCell.getText())) {
 					JOptionPane.showMessageDialog(null, "Você digitou mais de um caractere!");
+					sourceCell.setText("");
 					return;
 				}
 				// Retrieve the int entered
