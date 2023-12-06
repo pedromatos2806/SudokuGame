@@ -38,7 +38,7 @@ public class GameBoardPanel extends JPanel {
       for (int row = 0 ; row  < SudokuConstants.GRID_SIZE; ++row) {
     	   for (int col = 0 ;  col < SudokuConstants.GRID_SIZE; ++col) {
     	      if (cells[row][col].isEditable()) {
-    	         cells[row][col].addActionListener(listener);   // For all editable rows and cols
+    	         cells[row][col].addActionListener(listener);
     	      }
     	   }
     	}
@@ -80,6 +80,7 @@ public class GameBoardPanel extends JPanel {
 	    String texto = text.trim(); //Obtém o texto e remove espaços em branco no início/fim
 	    return texto.length() > 1;
 	}
+   
    // [TODO 2] Define a Listener Inner Class for all the editable Cells
    private class CellInputListener implements ActionListener {
       @Override
@@ -114,10 +115,9 @@ public class GameBoardPanel extends JPanel {
 				if (numberIn == sourceCell.number) {
 					sourceCell.status = CellStatus.CORRECT_GUESS;
 				} else {
-					//pinta a célula de vermelho caso esteja errada! 
+					//pinta a célula de vermelho caso esteja errada
 					sourceCell.status = CellStatus.WRONG_GUESS;
-					Erro.getInstance();
-					Erro.setNumberEros(Erro.getNumberErros()+1);
+					Erro.getInstance().updateErros(1);
 					if(Erro.getNumberErros() >= 3) {
 						JOptionPane.showMessageDialog(null, "Você errou mais de 3 vezes, ou seja, GAME OVER!!!");
 						SudokuMain.restartGame(true);

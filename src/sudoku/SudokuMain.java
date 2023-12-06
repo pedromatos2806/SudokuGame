@@ -34,19 +34,21 @@ public class SudokuMain extends JFrame {
 		getContentPane().setLayout(null);
 
 		// Botão Start Game
-		btnNewGame.setBounds(158, 357, 117, 25);
+		btnNewGame.setBounds(155, 357, 117, 25);
 		getContentPane().add(btnNewGame);
-		lblNiveis.setHorizontalAlignment(SwingConstants.CENTER);
 
 		// Label de Escolher Níveis:
 		lblNiveis.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblNiveis.setBounds(128, 265, 178, 30);
+		lblNiveis.setBounds(128, 275, 178, 30);
 		getContentPane().add(lblNiveis);
-		lblName.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNiveis.setForeground(new Color(0, 128, 192));
+		lblNiveis.setHorizontalAlignment(SwingConstants.CENTER);
 
 		// Label Digite seu nome :
+		lblName.setForeground(new Color(0, 128, 192));
+		lblName.setHorizontalAlignment(SwingConstants.CENTER);
 		lblName.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblName.setBounds(115, 190, 178, 30);
+		lblName.setBounds(130, 190, 178, 30);
 		getContentPane().add(lblName);
 
 		// ComboBox de Níveis
@@ -55,7 +57,7 @@ public class SudokuMain extends JFrame {
 		cmbNiveis.addItem("Fácil");
 		cmbNiveis.addItem("Médio");
 		cmbNiveis.addItem("Difícil");
-		cmbNiveis.setForeground(Color.BLACK);
+		cmbNiveis.setForeground(new Color(0, 128, 192));
 		cmbNiveis.setBackground(new Color(255, 255, 255));
 		getContentPane().add(cmbNiveis);
 
@@ -63,9 +65,9 @@ public class SudokuMain extends JFrame {
 		lblSudoku.setVisible(true);
 		lblSudoku.setBounds(450, 0, 480, 700);
 		getContentPane().add(lblSudoku);
-		btnRestartGame.setIcon(new ImageIcon(SudokuMain.class.getResource("/images/restart.png")));
 
 		// Botão Restart Game:
+		btnRestartGame.setIcon(new ImageIcon(SudokuMain.class.getResource("/images/restart.png")));
 		btnRestartGame.setBounds(655, 90, 51, 51);
 		getContentPane().add(btnRestartGame);
 
@@ -75,12 +77,12 @@ public class SudokuMain extends JFrame {
 		getContentPane().add(lblJogador);
 		lblJogador.setForeground(Color.BLACK);
 		lblJogador.setHorizontalAlignment(SwingConstants.LEFT);
-		lblImageJogador.setIcon(new ImageIcon(SudokuMain.class.getResource("/images/player.png")));
-		lblImageJogador.setSize(51, 51);
-		lblImageJogador.setLocation(604, 55);
 		
 		
 		// Label Imagem nome do Jogador 
+		lblImageJogador.setIcon(new ImageIcon(SudokuMain.class.getResource("/images/player.png")));
+		lblImageJogador.setSize(51, 51);
+		lblImageJogador.setLocation(604, 55);
 		getContentPane().add(lblImageJogador);
 		lblImageJogador.setVisible(false);
 		
@@ -160,7 +162,8 @@ public class SudokuMain extends JFrame {
 		setVisible(true);
 	}
 
-
+	
+	
 	public static void startGame(boolean bool) {
 		if (bool == true) {
 			try {
