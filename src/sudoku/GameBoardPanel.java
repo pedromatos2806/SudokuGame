@@ -87,11 +87,13 @@ public class GameBoardPanel extends JPanel {
          // Get a reference of the JTextField that triggers this action event
     	  Cell sourceCell = (Cell) e.getSource();
 			try {
+				//validar se tem mais de um caractere na célula
 				if (temMaisDeUmCaractere(sourceCell.getText())) {
 					JOptionPane.showMessageDialog(null, "Você digitou mais de um caractere!\nDigite um número inteiro entre 1 e 9");
 					sourceCell.setText("");
 					return;
 				}
+				//verificar na célula se há um numero 0
 				if(Integer.parseInt(sourceCell.getText())== 0) {
 					JOptionPane.showMessageDialog(null, "O numero 0 não entra no jogo!\nDigite um número inteiro entre 1 e 9");
 					sourceCell.setText("");
@@ -108,10 +110,11 @@ public class GameBoardPanel extends JPanel {
 				 * sourceCell.number. Update the cell status sourceCell.status, and re-paint the
 				 * cell via sourceCell.paint().
 				 */
-
+				//isso aqui é pra pintar a célula se for a correta
 				if (numberIn == sourceCell.number) {
 					sourceCell.status = CellStatus.CORRECT_GUESS;
 				} else {
+					//pinta a célula de vermelho caso esteja errada! 
 					sourceCell.status = CellStatus.WRONG_GUESS;
 					Erro.getInstance();
 					Erro.setNumberEros(Erro.getNumberErros()+1);

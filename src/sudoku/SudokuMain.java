@@ -11,7 +11,7 @@ import javax.swing.*;
 public class SudokuMain extends JFrame {
 
 	private static final long serialVersionUID = 1L; // to prevent serial warning
-	private static SudokuMain instance; //deixar só uma instãncia funcionando!!
+	private static SudokuMain instance;
 	private static String nomeJogador;
 
 	// private variables
@@ -141,7 +141,7 @@ public class SudokuMain extends JFrame {
 			}
 		});
 
-		// Cronometro
+		// Cronômetro
 		Relogio.getInstance().setBounds(660, 20, 90, 20);
 		Relogio.getInstance().setForeground(Color.BLACK);
 		Relogio.getInstance().setVisible(false);

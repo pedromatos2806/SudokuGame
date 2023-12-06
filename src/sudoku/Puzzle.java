@@ -46,11 +46,11 @@ public class Puzzle {
 					   {true, true, true, true, true, true, true, true, false},
 					   {true, true, true, true, true, true, true, true, true},
 					   {false, true, true, true, true, true, true, true, true},
+					   {true, true, true, true, true, false, true, true, true},
 					   {true, true, true, true, true, true, true, true, true},
-					   {true, true, true, true, true, true, true, true, true},
-					   {true, true, true, true, true, true, true, true, true},
-					   {true, true, true, true, true, true, true, true, true},
-					   {true, true, true, true, true, true, true, true, true}};
+					   {false, true, true, true, true, true, true, true, true},
+					   {true, true, true, true, true, true, true, true, false},
+					   {true, true, true, false, true, true, true, true, true}};
 		   
 		   // Copy from hardcodedIsGiven into array "isGiven"
 		   for (int row = 0; row < SudokuConstants.GRID_SIZE; ++row) {
@@ -86,10 +86,10 @@ public class Puzzle {
 					   {true, true, true, true, true, true, true, true, false},
 					   {true, false, true, true, true, true, true, true, true},
 					   {true, true, true, true, true, true, true, true, true},
-					   {false, true, true, true, true, true, true, true, true},
-					   {true, true, true, true, true, true, true, true, true},
-					   {true, true, true, true, true, true, false, true, true},
-					   {true, true, true, true, true, true, true, true, true},
+					   {false, true, true, true, true, true, true, false, true},
+					   {true, true, true, false, true, true, true, true, true},
+					   {true, true, true, true, false, true, false, true, true},
+					   {true, true, true, true, true, true, true, false, true},
 					   {true, true, false, true, true, true, true, true, true}};
 		   
 		// Copy from hardcodedIsGiven into array "isGiven"
@@ -126,12 +126,12 @@ public class Puzzle {
 				   {true, false, false, true, true, false, true, true, true},
 				   {true, true, true, true, true, true, true, true, false},
 				   {true, false, true, true, true, true, true, true, true},
-				   {true, true, true, true, true, true, true, true, true},
+				   {true, true, true, true, true, true, false, true, false},
 				   {false, true, true, false, true, true, true, true, true},
 				   {true, true, true, false, true, true, true, true, true},
 				   {true, true, false, true, true, true, false, true, true},
 				   {false, true, true, true, true, false, true, true, false},
-				   {true, true, false, true, true, true, true, true, false}};
+				   {true, true, false, true, true, false, true, true, false}};
 		   
 			// Copy from hardcodedIsGiven into array "isGiven"
 		   for (int row = 0; row < SudokuConstants.GRID_SIZE; ++row) {
