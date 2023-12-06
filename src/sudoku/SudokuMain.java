@@ -12,7 +12,7 @@ public class SudokuMain extends JFrame {
 
 	private static final long serialVersionUID = 1L; // to prevent serial warning
 	private static SudokuMain instance;
-	private static String nomeJogador;
+	private String nomeJogador;
 
 	// private variables
 	private static GameBoardPanel board = new GameBoardPanel();
@@ -25,9 +25,9 @@ public class SudokuMain extends JFrame {
 	private static JTextField txtName;
 	private static JLabel lblJogador = new JLabel();
 	private static JLabel lblImageJogador = new JLabel();
-	
+
 	// Constructor
-	public SudokuMain() {
+	private SudokuMain() {
 
 		Container cp = getContentPane();
 		setLocationRelativeTo(null);
@@ -77,15 +77,14 @@ public class SudokuMain extends JFrame {
 		getContentPane().add(lblJogador);
 		lblJogador.setForeground(Color.BLACK);
 		lblJogador.setHorizontalAlignment(SwingConstants.LEFT);
-		
-		
-		// Label Imagem nome do Jogador 
+
+		// Label Imagem nome do Jogador
 		lblImageJogador.setIcon(new ImageIcon(SudokuMain.class.getResource("/images/player.png")));
 		lblImageJogador.setSize(51, 51);
 		lblImageJogador.setLocation(604, 55);
 		getContentPane().add(lblImageJogador);
 		lblImageJogador.setVisible(false);
-		
+
 		// Pane Board:
 		board.setBounds(0, 50, 435, 462);
 		board.setVisible(false);
@@ -148,23 +147,20 @@ public class SudokuMain extends JFrame {
 		Relogio.getInstance().setForeground(Color.BLACK);
 		Relogio.getInstance().setVisible(false);
 		cp.add(Relogio.getInstance());
-		
-		
+
 		// Erro
-		Erro.getInstance().setBounds(645,40,90,20);
+		Erro.getInstance().setBounds(645, 40, 90, 20);
 		Erro.getInstance().setForeground(Color.RED);
 		Erro.getInstance().setVisible(false);
 		cp.add(Erro.getInstance());
-		
+
 		pack(); // Pack the UI components, instead of using setSize()
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // to handle window-closing
 		setTitle("Sudoku");
 		setVisible(true);
 	}
 
-	
-	
-	public static void startGame(boolean bool) {
+	public void startGame(boolean bool) {
 		if (bool == true) {
 			try {
 				board.setVisible(true);
@@ -186,7 +182,7 @@ public class SudokuMain extends JFrame {
 			txtName.setVisible(false);
 			nomeJogador = transformarString(txtName.getText());
 			lblJogador.setText(nomeJogador);
-
+			Erro.updateErrosRestart(0);
 		}
 	}
 
@@ -197,7 +193,7 @@ public class SudokuMain extends JFrame {
 			Erro.getInstance().setVisible(false);
 			lblJogador.setVisible(false);
 			lblImageJogador.setVisible(false);
-			Erro.setNumberEros(0);
+			Erro.updateErrosRestart(0);
 			cmbNiveis.setVisible(true);
 			btnNewGame.setVisible(true);
 			lblNiveis.setVisible(true);
@@ -207,6 +203,8 @@ public class SudokuMain extends JFrame {
 			lblJogador.setVisible(false);
 			Relogio.getInstance().setVisible(false);
 			Relogio.getInstance().stopTimer();
+			
+			
 		}
 	}
 
@@ -215,38 +213,38 @@ public class SudokuMain extends JFrame {
 			instance = new SudokuMain();
 		return instance;
 	}
-	
-	//Esse método serve para colocar letras maiusculas nos nomes próprios!
-    public static String transformarString(String input) {
-        if (input == null || input.isEmpty()) {
-            return input;
-        }
 
-        StringBuilder resultado = new StringBuilder();
-        boolean transformarParaMaiuscula = true;
+	// Esse método serve para colocar letras maiusculas nos nomes próprios!
+	public String transformarString(String input) {
+		if (input == null || input.isEmpty()) {
+			return input;
+		}
 
-        for (char caractere : input.toCharArray()) {
-            if (Character.isWhitespace(caractere)) {
-                resultado.append(caractere);
-                transformarParaMaiuscula = true;
-            } else if (transformarParaMaiuscula) {
-                resultado.append(Character.toUpperCase(caractere));
-                transformarParaMaiuscula = false;
-            } else {
-                resultado.append(Character.toLowerCase(caractere));
-            }
-        }
+		StringBuilder resultado = new StringBuilder();
+		boolean transformarParaMaiuscula = true;
 
-        return resultado.toString();
-    }
-	
-    /** The entry main() entry method */
+		for (char caractere : input.toCharArray()) {
+			if (Character.isWhitespace(caractere)) {
+				resultado.append(caractere);
+				transformarParaMaiuscula = true;
+			} else if (transformarParaMaiuscula) {
+				resultado.append(Character.toUpperCase(caractere));
+				transformarParaMaiuscula = false;
+			} else {
+				resultado.append(Character.toLowerCase(caractere));
+			}
+		}
+
+		return resultado.toString();
+	}
+
+	/** The entry main() entry method */
 	public static void main(String[] args) {
 		// [TODO 1] Check "Swing program template" on how to run
 		// the constructor of "SudokuMain"
 		// .........
-			SudokuMain frame = getInstance();
-			frame.setVisible(true);
+		SudokuMain frame = getInstance();
+		frame.setVisible(true);
 
 	}
 }

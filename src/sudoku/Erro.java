@@ -7,7 +7,7 @@ public class Erro extends JLabel {
 
 	private static final long serialVersionUID = 1L;
 	private static Erro instance;
-	private static int numberErros;
+	private static  int numberErros;
 
 	private Erro() {
 		updateErros(0);
@@ -23,24 +23,32 @@ public class Erro extends JLabel {
 		return numberErros;
 	}
 
-	public static void setNumberEros(int erro) {
+	public static void setNumberErros(int erro) {
 		numberErros = erro;
 	}
 
-	private void exibirMensagemErro(String mensagem) {
+	private static void exibirMensagemErro(String mensagem) {
 		JOptionPane.showMessageDialog(null, mensagem, "Erro", JOptionPane.ERROR_MESSAGE);
 	}
 
 	public void updateErros(int qtd_erros) {
-		setNumberEros(getNumberErros() + qtd_erros);
-		super.setText("Erro : " + getNumberErros() + " de  3");
+		if (qtd_erros > 0) {
+			setNumberErros(getNumberErros() + qtd_erros);
+			super.setText("Erro : " + getNumberErros() + " de  3");
+		}
 
-		// Exibe a mensagem de erro
+		// Exibe o alerta de erro!
 		if (getNumberErros() > 2) {
 			exibirMensagemErro("GAME OVER!!!!\nLimite de erros atingido. O jogo será encerrado.");
 			Relogio.getInstance().stopTimer();
-			SudokuMain.getInstance().restartGame(true);
+			SudokuMain.restartGame(true);
 		}
+	}
+
+	public static void updateErrosRestart(int qtd_erros) {
+		if(qtd_erros == 0)
+		setNumberErros(qtd_erros);
+		instance.setText("Erro : " + getNumberErros() + " de  3");
 	}
 
 }

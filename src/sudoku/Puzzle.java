@@ -41,8 +41,8 @@ public class Puzzle {
 		   
 		   // Need to use input parameter cellsToGuess!
 		   // Hardcoded for testing, only 2 cells of "8" is NOT GIVEN
-		   boolean[][] hardcodedIsGiven =
-			   {{true, true, true, true, true, false, true, true, true},
+		   boolean[][] hardcodedIsGiven ={
+			   		   {true, true, true, true, true, false, true, true, true},
 					   {true, true, true, true, true, true, true, true, false},
 					   {true, true, true, true, true, true, true, true, true},
 					   {false, true, true, true, true, true, true, true, true},
@@ -81,8 +81,8 @@ public class Puzzle {
 		   
 		// Need to use input parameter cellsToGuess!
 		   // Hardcoded for testing, only 2 cells of "8" is NOT GIVEN
-		   boolean[][] hardcodedIsGiven =
-			   {{true, true, false, true, true, false, true, true, true},
+		   boolean[][] hardcodedIsGiven = {
+					   {true, true, false, true, true, false, true, true, true},
 					   {true, true, true, true, true, true, true, true, false},
 					   {true, false, true, true, true, true, true, true, true},
 					   {true, true, true, true, true, true, true, true, true},
@@ -121,8 +121,7 @@ public class Puzzle {
 			   }
 		   }
 		   
-		   boolean[][] hardcodedIsGiven =
-			   {
+		   boolean[][] hardcodedIsGiven ={
 				   {true, false, false, true, true, false, true, true, true},
 				   {true, true, true, true, true, true, true, true, false},
 				   {true, false, true, true, true, true, true, true, true},
