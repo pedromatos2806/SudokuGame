@@ -27,21 +27,20 @@ public class Erro extends JLabel {
 		numberErros = erro;
 	}
 
-    private void exibirMensagemErro(String mensagem) {
-        JOptionPane.showMessageDialog(null, mensagem, "Erro", JOptionPane.ERROR_MESSAGE);
-    }
-	
-    public void updateErros(int qtd_erros) {
-        setNumberEros(getNumberErros() + qtd_erros);
-        super.setText("Erro : "+ getNumberErros() +" de  3");
+	private void exibirMensagemErro(String mensagem) {
+		JOptionPane.showMessageDialog(null, mensagem, "Erro", JOptionPane.ERROR_MESSAGE);
+	}
 
-        // Exibe a mensagem de erro
-        if(getNumberErros() > 2) {
-            Relogio.getInstance().stopTimer();
-            exibirMensagemErro("Limite de erros atingido. O jogo será encerrado.");
-            var sudo = SudokuMain.getInstance();
-			sudo.restartGame(true); // Adicione essa linha se desejar reiniciar o jogo ao atingir o limite de erros
-        }
-    }
+	public void updateErros(int qtd_erros) {
+		setNumberEros(getNumberErros() + qtd_erros);
+		super.setText("Erro : " + getNumberErros() + " de  3");
+
+		// Exibe a mensagem de erro
+		if (getNumberErros() > 2) {
+			exibirMensagemErro("GAME OVER!!!!\nLimite de erros atingido. O jogo será encerrado.");
+			Relogio.getInstance().stopTimer();
+			SudokuMain.getInstance().restartGame(true);
+		}
+	}
 
 }
